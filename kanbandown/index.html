@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>KanbanDown</title>
+    <link rel="stylesheet" href="css/kanbandown.css"/>
+    <link rel="stylesheet" href="css/basic/emojify.min.css" />
+    <style>
+        .emoji {
+            width: 1.5em;
+            height: 1.5em;
+            display: inline-block;
+            margin-bottom: 0.2em;
+        }
+        .textOutput{
+            border: none;
+            overflow: auto;
+            outline: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            width: 100%;
+            min-height: 300px;
+            margin: 10px;
+            background: #EEE;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main" class="container">
+    <div class="board"></div>
+    <textarea class="textOutput" @keyup="updateKanban" v-model="textOutput"></textarea>
+</div>
+<script src="js/emojify.min.js"></script>
+<script src="index.js"></script>
+<p> kanbandown by https://github.com/anydown/kanbandown</p>
+</body>
+</html>
+
+
