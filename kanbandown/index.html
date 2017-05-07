@@ -20,10 +20,10 @@
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
             box-shadow: none;
-            width: 100%;
+            min-width: 300px;
             min-height: 300px;
             margin: 10px;
-            background: #EEE;
+            background: #FEE;
         }
     </style>
 </head>
@@ -31,7 +31,7 @@
 
 <div id="main" class="container">
     <div class="board"></div>
-    <textarea class="textOutput" @keyup="updateKanban" v-model="textOutput"></textarea>
+    <textarea class="textOutput" @keyup.enter="addDot" @keyup="updateKanban" v-model="textOutput"></textarea>
 </div>
 <script src="js/emojify.min.js"></script>
 <script src="index.js"></script>

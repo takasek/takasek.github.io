@@ -64,6 +64,25 @@
 	        textOutput: "# TODO\n\n- タスク１\n- タスク２ :warning:\n- タスク３\n\n# DOING\n\n- タスク４\n\n# DONE\n\n- タスク５\n- タスク６"
 	    },
 	    methods: {
+	        addDot: function () {
+var text = "- ";
+var input = document.activeElement;
+var pos = input.selectionStart;
+var preLines = input.value.substring(0, pos).split("\n");
+if (preLines[preLines.length-2].trim().indexOf("-") === 0) {
+    var scrollPos = input.scrollTop;
+    var front = (input.value).substring(0, pos);
+    var back = (input.value).substring(pos, input.value.length);
+    input.value = front+text+back;
+    pos = pos + text.length;
+    input.selectionStart = pos;
+    input.selectionEnd = pos;
+    input.focus();
+    input.scrollTop = scrollPos;
+}
+	            kanban.setData(main_1.Kanban.mdToKanban(this.textOutput));
+	            emojify.run();
+	        },
 	        updateKanban: function () {
 	            kanban.setData(main_1.Kanban.mdToKanban(this.textOutput));
 	            emojify.run();
