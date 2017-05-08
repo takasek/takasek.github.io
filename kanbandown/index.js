@@ -69,7 +69,7 @@ var text = "- ";
 var input = document.activeElement;
 var pos = input.selectionStart;
 var preLines = input.value.substring(0, pos).split("\n");
-if (preLines[preLines.length-2].trim().indexOf("-") === 0) {
+if (preLines[preLines.length-1].trim().length === 0 && preLines[preLines.length-2].trim().indexOf("-") === 0) {
     var scrollPos = input.scrollTop;
     var front = (input.value).substring(0, pos);
     var back = (input.value).substring(pos, input.value.length);
@@ -80,7 +80,7 @@ if (preLines[preLines.length-2].trim().indexOf("-") === 0) {
     input.focus();
     input.scrollTop = scrollPos;
 }
-	            kanban.setData(main_1.Kanban.mdToKanban(this.textOutput));
+	            kanban.setData(main_1.Kanban.mdToKanban(input.value));
 	            emojify.run();
 	        },
 	        updateKanban: function () {
