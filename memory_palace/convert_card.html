@@ -1,0 +1,106 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+button {
+    font-size:  20px;
+    margin: 10px;
+}
+.flex-box {
+    background-color: #fff;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    margin:  8%;
+}
+ 
+.flex-item {
+    padding: 10px 0px;
+    background-color: #eee;
+    color:  #000;
+    font-size:  20px;
+    text-align: center;
+    margin:  2px;
+    border-radius:  5px;
+    width:8%;
+    height: 30px;
+}
+#logger {
+    background-color: #eee;
+    margin:  10%;
+    padding: 10px;
+}
+-->
+</style>
+<script>
+<!-- 
+function btn() { return document.getElementById("btn") }
+function counter() { return document.getElementById("counter") }
+function logger() { return document.getElementById("logger") }
+function applyEachCard(f) { Array.from(document.getElementById("box").children).forEach(f); }
+var times = [];
+var ranAt = null;
+var timer = null;
+function shuffle(array) {
+  var n = array.length, t, i;
+  while (n) {
+    i = Math.floor(Math.random() * n--);
+    t = array[n];
+    array[n] = array[i];
+    array[i] = t;
+  }
+  return array;
+}
+function description(msec) {
+  const sec = (msec / 1000);
+  const nf = new Intl.NumberFormat("ja-JP", { useGrouping:false, minimumIntegerDigits:2, minimumFractionDigits:2, maximumFractionDigits:2 });
+  
+  return `${nf.format(sec)}秒`;
+}
+function toggleRunning(toRun) {
+  if (toRun) {
+    ranAt = Date.now();
+    timer = setInterval(() => { counter().innerHTML = description(Date.now() - ranAt); } , 20);
+    var cards = shuffle([1,2,3,4,5,6,7,8,9,0]);
+    applyEachCard(e => e.innerHTML = cards.pop());
+    btn().innerHTML = "停止";
+    btn().onclick = () => toggleRunning(false);
+  } else {
+    times.push(Date.now() - ranAt);
+    clearInterval(timer);
+    ranAt = null;
+
+    applyEachCard(e => e.innerHTML = "");
+    btn().innerHTML = "開始";
+    btn().onclick = () => toggleRunning(true);
+    counter().innerHTML = "";
+    logger().innerHTML
+      = `全${times.length}回<br />`
+      + `平均: ${description(times.reduce((a,b)=>a+b) / times.length)}<br />`
+      + `最高: ${description(times.reduce((a,b)=>Math.min(a,b)))}<br />`
+      + "---</br />"
+      + times.map((d, i) => `${i+1}回目: ${description(d)}`).join("<br />");
+  }
+}
+ -->
+</script>
+</head>
+<body>
+<h1>変換練習</h1>
+<div><button id="btn" type="button" onclick="toggleRunning(true)">開始</button><span id="counter"></span></div>
+<div id="box" class="flex-box">
+    <div class="flex-item">開</div>
+    <div class="flex-item">始</div>
+    <div class="flex-item">押</div>
+    <div class="flex-item">す</div>
+    <div class="flex-item">と</div>
+    <div class="flex-item">数</div>
+    <div class="flex-item">字</div>
+    <div class="flex-item">出</div>
+    <div class="flex-item">ま</div>
+    <div class="flex-item">す</div>
+</div>
+<div id="logger">ここに結果が表示されます<div>
+</div>
+</body>
+</html>
